@@ -1,4 +1,4 @@
-# Abhinav's Portfolio Website 🌐
+# G Abhinav - Portfolio Website 🌐
 
 Welcome to my personal portfolio!  
 Explore my work, skills, and projects at [**abhinav.is-a.dev**](https://abhinav.is-a.dev/).
@@ -85,3 +85,4 @@ Feel free to browse around my projects, drop me a message, or connect. I’m alw
 ---
 
 ### ✨ Stay Curious, Keep Coding! ✨
+
