@@ -48,8 +48,8 @@ I focus on creating user-centric, beautiful UI designs paired with intuitive fun
 ## 📍 Let's Connect!
 
 - 📧 Email: **abhinav.achiver01@gmail.com**
-- 💼 LinkedIn: [linkedin.com/in/abhinav]([https://linkedin.com/in/abhinav](https://www.linkedin.com/in/g-abhinav-138a39252/)
-- 🐦 Twitter: [@abhinav_dev]([https://twitter.com/abhinav_dev](https://x.com/GAbhinav_001)
+- 💼 LinkedIn: [linkedin.com/in/abhinav](https://linkedin.com/in/abhinav](https://www.linkedin.com/in/g-abhinav-138a39252/)
+- 🐦 Twitter: [@abhinav](https://twitter.com/abhinav_dev](https://x.com/GAbhinav_001)
 
 ---
 
@@ -85,6 +85,7 @@ Feel free to browse around my projects, drop me a message, or connect. I’m alw
 ---
 
 ### ✨ Stay Curious, Keep Coding! ✨
+
 
 
 
