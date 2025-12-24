@@ -243,7 +243,7 @@ jQuery(document).ready(function ($) {
       if(target.length) {
         $('html, body').animate({
           scrollTop: target.offset().top - 80
-        }, 600, 'easeInOutExpo');
+        }, 1200, 'easeInOutExpo');
       }
     });
 

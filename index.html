@@ -46,6 +46,8 @@
         crossorigin="anonymous"></script>
     <script src="js/modernizr.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 
     <!-- Preload critical resources -->
     <link rel="preload" href="Images/profile.jpg" as="image">
@@ -265,7 +267,7 @@
                         <div class="interests-grid">
                             <div class="interest-item">
                                 <i class="fas fa-music"></i>
-                                <span>Singing</span>
+                                <span>Instrumental Music & Singing</span>
                             </div>
                             <div class="interest-item">
                                 <i class="fas fa-language"></i>
@@ -273,7 +275,7 @@
                             </div>
                             <div class="interest-item">
                                 <i class="fas fa-comments"></i>
-                                <span>Effective Communication</span>
+                                <span>Communication Skills</span>
                             </div>
                             <div class="interest-item">
                                 <i class="fas fa-book-open"></i>
@@ -570,20 +572,33 @@
     <!-- Projects Section END -->
 
     <!-- Contact Section START -->
-    <section id="contact" class="py-5 bg-light">
-        <div class="container shadow-lg p-5 rounded">
-            <h2 class="text-center font-weight-bold mb-4">Get in Touch</h2>
+    <section id="contact" class="py-5" style="background: transparent;">
+        <div class="container p-5 rounded"
+            style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+            <h2 class="text-center font-weight-bold mb-4" style="color: white;">Get in Touch</h2>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <p class="lead">
+                    <p class="lead" style="color: #b3b3b3;">
                         I'm always open to discussing new projects, creative ideas, or opportunities.
                     </p>
+
+                    <div class="contact-info my-4">
+                        <div class="mb-2" style="color: #e0e0e0;">
+                            <i class="fas fa-map-marker-alt me-2 text-primary"></i> <span
+                                class="font-weight-bold">Location:</span> Bhilai, Chhattisgarh, India
+                        </div>
+                        <div class="mb-2" style="color: #e0e0e0;">
+                            <i class="fas fa-circle me-2 text-success" style="font-size: 0.8em;"></i> <span
+                                class="font-weight-bold">Status:</span> Available for opportunities
+                        </div>
+                    </div>
+
                     <div class="contact-buttons mt-4">
                         <a href="mailto:abhinav.achiver@gmail.com" class="btn btn-primary btn-lg m-2">
-                            <i class="fas fa-envelope mr-2"></i> Email Me
+                            <i class="fas fa-envelope mr-2"></i> abhinav.achiver@gmail.com
                         </a>
                         <a href="https://www.linkedin.com/in/g-abhinav-138a39252/" target="_blank"
-                            class="btn btn-outline-primary btn-lg m-2">
+                            class="btn btn-outline-light btn-lg m-2">
                             <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
                         </a>
                     </div>
@@ -621,7 +636,11 @@
         // AOS Animation
         AOS.init({
             duration: 1000,
-            once: true
+            easing: 'ease-out',
+            once: false, // Mirror animations (fade out when scrolling away)
+            mirror: true,
+            anchorPlacement: 'top-bottom',
+            offset: 50
         });
 
         // Back to top button
