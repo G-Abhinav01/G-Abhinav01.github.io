@@ -47,16 +47,16 @@ I focus on creating user-centric, beautiful UI designs paired with intuitive fun
 
 ## 📍 Let's Connect!
 
-- 📧 Email: **abhinav@domain.com**
-- 💼 LinkedIn: [linkedin.com/in/abhinav](https://linkedin.com/in/abhinav)
-- 🐦 Twitter: [@abhinav_dev](https://twitter.com/abhinav_dev)
+- 📧 Email: **abhinav.achiver01@gmail.com**
+- 💼 LinkedIn: [linkedin.com/in/abhinav]([https://linkedin.com/in/abhinav](https://www.linkedin.com/in/g-abhinav-138a39252/))
+- 🐦 Twitter: [@abhinav_dev]([https://twitter.com/abhinav_dev](https://x.com/GAbhinav_001)
 
 ---
 
 ## 💡 Technologies I Love
 
-- **React** | **Node.js** | **Django**
-- **Flutter** | **Kotlin** | **Swift**
+- **c++** | **GenAI** | **Python**
+- **Flutter** | **Java** | **Cloud**
 - **AWS** | **Docker** | **CI/CD**
 
 ---
@@ -65,12 +65,12 @@ I focus on creating user-centric, beautiful UI designs paired with intuitive fun
 
 I’m constantly exploring new technologies and frameworks. Currently diving into:
 - **Machine Learning**
-- **Blockchain Development**
+- **AI Engineering - techs like RAG, GenAI, Agentic AI and such**
 - **Cloud Computing**
 
 ---
 
-## 🎯 Goals for 2025
+## 🎯 Goals for 2026
 
 - Master **AI & Machine Learning**.
 - Contribute to open-source projects.
@@ -85,4 +85,5 @@ Feel free to browse around my projects, drop me a message, or connect. I’m alw
 ---
 
 ### ✨ Stay Curious, Keep Coding! ✨
+
 
