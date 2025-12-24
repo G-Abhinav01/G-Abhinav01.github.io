@@ -60,7 +60,9 @@ body::before {
     --text-light: #b3b3b3;
     --border-color: rgba(255, 255, 255, 0.1);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --transition: all 0.15s ease;
+
+    /* Very Slow, "Peaceful" Transition */
+    --transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 
     /* Touch-friendly sizing */
     --touch-target-size: 44px;
@@ -152,7 +154,7 @@ body::before {
     margin: 0 0.5rem;
     padding: 0.5rem 1rem !important;
     border-radius: 25px;
-    transition: all 0.1s ease;
+    transition: var(--transition);
     position: relative;
     cursor: pointer;
 }
@@ -336,7 +338,10 @@ section {
     font-weight: 600;
     text-decoration: none;
     display: inline-block;
-    transition: all 0.2s ease;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: var(--transition);
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
@@ -383,7 +388,10 @@ section {
     background: var(--card-bg);
     color: white;
     text-decoration: none;
-    transition: all 0.2s ease;
+    background: var(--card-bg);
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
     font-size: 1.3em;
