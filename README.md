@@ -1,7 +1,7 @@
 # G Abhinav - Portfolio Website 🌐
 
 Welcome to my personal portfolio!  
-Explore my work, skills, and projects at [**abhinav.is-a.dev**](https://abhinav01.is-a.dev/) || [**abhinav001.vercell.app**](https://abhinav001.vercel.app/)
+Explore my work, skills, and projects at [**abhinav001.vercell.app**](https://abhinav001.vercel.app/) || [**abhinav.is-a.dev**](https://abhinav01.is-a.dev/)
 
 > *"The art of programming is not just in the code, but in the way we express ideas through technology."*
 
@@ -85,6 +85,7 @@ Feel free to browse around my projects, drop me a message, or connect. I’m alw
 ---
 
 ### ✨ Stay Curious, Keep Coding! ✨
+
 
 
 
