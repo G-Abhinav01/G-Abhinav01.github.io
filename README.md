@@ -1,93 +1,16 @@
-# G Abhinav - Portfolio Website 🌐
+# React + Vite
 
-Welcome to my personal portfolio!  
-Explore my work, skills, and projects at [**abhinav001.vercell.app**](https://abhinav001.vercel.app/) || [**abhinav.is-a.dev**](https://abhinav01.is-a.dev/)
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-> *"The art of programming is not just in the code, but in the way we express ideas through technology."*
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🚀 About Me
+## React Compiler
 
-Hi, I'm **Abhinav**, a passionate developer who loves solving complex problems and creating meaningful applications. This is my space to showcase my journey in coding and design.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the Oxlint configuration
 
-## 🛠️ Skills
-
-### 💻 **Languages**
-- **C++** 
-- **Python**
-- **C#**
-- **HTML**
-- **CSS**
-- **JavaScript**
-
-### 🗃️ **Databases**
-- **MySQL**
-- **DBMS**
-
-### 🛠️ **Tools & IDEs**
-- **Git** & **GitHub**
-- **Android Studio**
-- **Postman**
-- **Visual Studio Code**
-
----
-
-## 🎨 Portfolio Highlights
-
-### 📂 Projects
-Check out the exciting projects I’ve worked on, showcasing a mix of web and mobile development, data science, and more. You can find the full list of my projects on my [**Portfolio Website**](https://abhinav.is-a.dev/).
-
-### ✨ Design & Aesthetics
-I focus on creating user-centric, beautiful UI designs paired with intuitive functionality. Browse through the projects to see the combination of clean, modern aesthetics with powerful back-end functionality.
-
----
-
-## 📍 Let's Connect!
-
-- 📧 Email: **abhinav.achiver01@gmail.com**
-- 💼 LinkedIn: [linkedin.com/in/abhinav](https://linkedin.com/in/abhinav](https://www.linkedin.com/in/g-abhinav-138a39252/)
-- 🐦 Twitter: [@abhinav](https://twitter.com/abhinav_dev](https://x.com/GAbhinav_001)
-
----
-
-## 💡 Technologies I Love
-
-- **c++** | **GenAI** | **Python**
-- **Flutter** | **Java** | **Cloud**
-- **AWS** | **Docker** | **CI/CD**
-
----
-
-## 🌱 Learning Journey
-
-I’m constantly exploring new technologies and frameworks. Currently diving into:
-- **Machine Learning**
-- **AI Engineering - techs like RAG, GenAI, Agentic AI and such**
-- **Cloud Computing**
-
----
-
-## 🎯 Goals for 2026
-
-- Master **AI & Machine Learning**.
-- Contribute to open-source projects.
-- Build scalable, cloud-native apps with modern architecture.
-
----
-
-## 🌟 Thank You for Visiting!
-
-Feel free to browse around my projects, drop me a message, or connect. I’m always open to new collaborations and challenges.
-
----
-
-### ✨ Stay Curious, Keep Coding! ✨
-
-
-
-
-
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
