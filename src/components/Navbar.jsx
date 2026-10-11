@@ -1,166 +1,201 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Terminal, ExternalLink, Code2, Sparkles, FileText } from 'lucide-react';
+import { Menu, X, Volume2, VolumeX, FileText, ArrowUpRight } from 'lucide-react';
+import { sound } from '../utils/sound';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [audioActive, setAudioActive] = useState(false);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Education', href: '#education' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Terminal', href: '#terminal' },
+    { name: 'Architecture', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Proficiencies', href: '#skills' },
+    { name: 'Console', href: '#terminal' },
     { name: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-
-      const sections = navLinks.map((link) => link.href.substring(1));
-      const scrollPos = window.scrollY + 200;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(sections[i]);
-          break;
-        }
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleSound = () => {
+    const isNowOn = sound.toggle();
+    setAudioActive(isNowOn);
+    if (isNowOn) sound.playClick();
+  };
 
   return (
     <header
       style={{
         position: 'fixed',
-        top: '16px',
+        top: '20px',
         left: 0,
         right: 0,
         zIndex: 1000,
         display: 'flex',
         justifyContent: 'center',
-        padding: '0 20px',
+        padding: '0 24px',
         pointerEvents: 'none',
       }}
     >
       <nav
         style={{
           width: '100%',
-          maxWidth: '1180px',
-          height: '64px',
+          maxWidth: '1280px',
+          height: '66px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 24px',
-          borderRadius: '9999px',
+          padding: '0 28px',
+          borderRadius: '16px',
           background: scrolled
-            ? 'rgba(6, 11, 28, 0.82)'
-            : 'rgba(8, 14, 34, 0.6)',
+            ? 'rgba(10, 12, 18, 0.88)'
+            : 'rgba(14, 16, 24, 0.6)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.09)',
-          boxShadow: scrolled
-            ? '0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.1)'
-            : '0 8px 32px rgba(0, 0, 0, 0.3)',
-          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          border: '1px solid var(--border-hairline)',
+          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.5)',
+          transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
           pointerEvents: 'auto',
         }}
       >
-        {/* Brand Logo */}
+        {/* Brand Typography */}
         <a
           href="#home"
+          data-cursor="HOME"
+          onMouseEnter={() => sound.playHover()}
+          onClick={() => sound.playClick()}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
+            gap: '12px',
             textDecoration: 'none',
             color: '#fff',
             fontFamily: 'var(--font-display)',
             fontWeight: 800,
-            fontSize: '1.2rem',
-            letterSpacing: '-0.02em',
+            fontSize: '1.25rem',
+            letterSpacing: '-0.03em',
           }}
         >
-          <div
+          <span style={{ color: 'var(--acid-lime)' }}>●</span>
+          <span>G ABHINAV</span>
+          <span
             style={{
-              width: '34px',
-              height: '34px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #00f2fe 0%, #7928ca 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#030611',
-              boxShadow: '0 0 15px rgba(0, 242, 254, 0.4)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.72rem',
+              color: 'var(--text-dim)',
+              letterSpacing: '0.08em',
+              paddingLeft: '6px',
             }}
           >
-            <Code2 size={18} strokeWidth={2.5} />
-          </div>
-          <span>
-            G <span style={{ color: 'var(--cyan)' }}>Abhinav</span>
+            / DEV
           </span>
         </a>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Links */}
         <div
           style={{
             display: 'none',
             alignItems: 'center',
-            gap: '4px',
+            gap: '24px',
           }}
           className="desktop-nav"
         >
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.href.substring(1);
-            return (
-              <a
-                key={link.name}
-                href={link.href}
-                style={{
-                  position: 'relative',
-                  padding: '8px 14px',
-                  borderRadius: '9999px',
-                  fontSize: '0.88rem',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  color: isActive ? 'var(--cyan)' : 'var(--text-muted)',
-                  background: isActive ? 'rgba(0, 242, 254, 0.1)' : 'transparent',
-                  border: isActive ? '1px solid rgba(0, 242, 254, 0.25)' : '1px solid transparent',
-                  transition: 'all 0.25s ease',
-                }}
-              >
-                {link.name}
-              </a>
-            );
-          })}
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              data-cursor="GO"
+              onMouseEnter={() => sound.playHover()}
+              onClick={() => sound.playClick()}
+              style={{
+                fontSize: '0.86rem',
+                fontFamily: 'var(--font-mono)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--text-pure)')}
+              onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+            >
+              {link.name}
+            </a>
+          ))}
         </div>
 
-        {/* Action CTAs */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Right CTA & Sound Controls */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          {/* Audio Synthesizer Toggle */}
+          <button
+            type="button"
+            onClick={toggleSound}
+            data-cursor="AUDIO"
+            title={audioActive ? 'Mute Sound FX' : 'Enable Interactive Sound FX'}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 12px',
+              borderRadius: '10px',
+              background: audioActive ? 'rgba(198, 255, 0, 0.12)' : 'rgba(255, 255, 255, 0.04)',
+              border: audioActive ? '1px solid var(--acid-lime)' : '1px solid var(--border-hairline)',
+              color: audioActive ? 'var(--acid-lime)' : 'var(--text-muted)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            {audioActive ? <Volume2 size={14} /> : <VolumeX size={14} />}
+            <span style={{ display: 'none' }} className="sound-label">
+              {audioActive ? 'FX ON' : 'FX OFF'}
+            </span>
+          </button>
+
+          {/* Resume Link */}
           <a
             href="https://drive.google.com/file/d/1Fp78dHZzr_OlKjfPPCVcBUrxTEmFB8pm/view?usp=drivesdk"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-cyber-primary"
+            data-cursor="RESUME"
+            onMouseEnter={() => sound.playHover()}
+            onClick={() => sound.playClick()}
             style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'var(--text-pure)',
+              color: '#08090d',
               padding: '8px 18px',
+              borderRadius: '10px',
+              fontFamily: 'var(--font-display)',
+              fontWeight: 800,
               fontSize: '0.85rem',
-              borderRadius: '9999px',
+              textDecoration: 'none',
+              transition: 'all 0.25s ease',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = 'var(--acid-lime)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = 'var(--text-pure)';
+              e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
-            <FileText size={15} />
             <span>Resume</span>
+            <ArrowUpRight size={14} />
           </a>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Drawer Trigger */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -172,9 +207,9 @@ export default function Navbar() {
               justifyContent: 'center',
               width: '38px',
               height: '38px',
-              borderRadius: '50%',
+              borderRadius: '10px',
               background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              border: '1px solid var(--border-hairline)',
               color: '#fff',
               cursor: 'pointer',
             }}
@@ -184,20 +219,18 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {mobileOpen && (
         <div
           style={{
             position: 'fixed',
-            top: '90px',
+            top: '95px',
             left: '20px',
             right: '20px',
-            background: 'rgba(6, 11, 28, 0.96)',
-            backdropFilter: 'blur(25px)',
-            WebkitBackdropFilter: 'blur(25px)',
-            borderRadius: '24px',
-            border: '1px solid rgba(0, 242, 254, 0.25)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.7)',
+            background: 'rgba(12, 14, 22, 0.98)',
+            backdropFilter: 'blur(30px)',
+            borderRadius: '20px',
+            border: '1px solid var(--border-hairline)',
             padding: '24px',
             display: 'flex',
             flexDirection: 'column',
@@ -210,19 +243,19 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setMobileOpen(false)}
+              onClick={() => {
+                sound.playClick();
+                setMobileOpen(false);
+              }}
               style={{
-                padding: '12px 18px',
+                padding: '14px 18px',
                 borderRadius: '12px',
-                color: activeSection === link.href.substring(1) ? 'var(--cyan)' : '#f1f5f9',
-                background:
-                  activeSection === link.href.substring(1)
-                    ? 'rgba(0, 242, 254, 0.1)'
-                    : 'rgba(255, 255, 255, 0.03)',
+                color: '#fff',
+                background: 'rgba(255, 255, 255, 0.03)',
                 textDecoration: 'none',
-                fontWeight: 600,
-                fontSize: '1rem',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                fontFamily: 'var(--font-display)',
+                fontWeight: 700,
+                fontSize: '1.05rem',
               }}
             >
               {link.name}
@@ -232,12 +265,15 @@ export default function Navbar() {
       )}
 
       <style>{`
-        @media (min-width: 900px) {
+        @media (min-width: 960px) {
           .desktop-nav {
             display: flex !important;
           }
           .mobile-toggle {
             display: none !important;
+          }
+          .sound-label {
+            display: inline !important;
           }
         }
       `}</style>

@@ -1,65 +1,73 @@
-import TiltCard from './TiltCard';
-import {
-  User,
-  Globe,
-  Database,
-  Users2,
-  ShieldCheck,
-  BookOpen,
-  Mic,
-  Globe2,
-  MessageSquare,
-} from 'lucide-react';
+import { useState } from 'react';
+import { Layers, ShieldCheck, Terminal, Database, ArrowRight, Check } from 'lucide-react';
+import { sound } from '../utils/sound';
 
 export default function About() {
-  const highlights = [
-    {
-      icon: <Globe size={22} color="var(--cyan)" />,
-      title: 'Full-Stack Web Architecture',
-      desc: 'Building production platforms using Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS, and Server Actions.',
-    },
-    {
-      icon: <Database size={22} color="#3b82f6" />,
-      title: 'SQL & Enterprise Databases',
-      desc: 'Extensive experience with Microsoft SQL Server, SSMS, SSRS, stored procedures, database updates, and PostgreSQL/Supabase.',
-    },
-    {
-      icon: <Users2 size={22} color="#a855f7" />,
-      title: 'Client-Facing Engineering & UAT',
-      desc: 'Conducting User Acceptance Testing (UAT), dry runs, pilot runs, go-live deployments, and end-user training in hybrid Agile/Waterfall setups.',
-    },
-    {
-      icon: <ShieldCheck size={22} color="#10b981" />,
-      title: 'Security, RLS & Server Infrastructure',
-      desc: 'Implementing Row Level Security (RLS), role-based authorization, server-side DOMPurify sanitization, IIS server setup, and DNS cutovers.',
-    },
-  ];
+  const [activeTab, setActiveTab] = useState('fullstack');
 
-  const interests = [
-    { icon: <Mic size={20} color="#ec4899" />, title: 'Singing', tag: 'Acoustic & Vocals' },
-    { icon: <Globe2 size={20} color="var(--cyan)" />, title: 'Learning Languages', tag: 'Linguistics' },
-    { icon: <MessageSquare size={20} color="#a855f7" />, title: 'Communication', tag: 'Client Facing & Collaboration' },
-    { icon: <BookOpen size={20} color="#3b82f6" />, title: 'Reading Novels', tag: 'Focus & Ideation' },
-  ];
+  const snippets = {
+    fullstack: `// Next.js 16 Server Action Boundary & HTML Sanitization
+import DOMPurify from 'isomorphic-dompurify';
+import { createServerClient } from '@/lib/supabase/server';
+
+export async function publishArticle(data: ArticlePayload) {
+  const supabase = await createServerClient();
+  const { data: user } = await supabase.auth.getUser();
+  
+  if (user?.app_metadata?.role !== 'admin') {
+    throw new Error('Unauthorized mutation boundary');
+  }
+
+  const cleanBody = DOMPurify.sanitize(data.body);
+  return await supabase.from('articles').insert({
+    ...data,
+    body: cleanBody,
+    published_at: new Date().toISOString()
+  });
+}`,
+    sql: `-- Microsoft SQL Server: Enterprise Stored Procedure Pattern
+CREATE PROCEDURE dbo.usp_ExecuteGoLiveValidation
+    @EnvironmentId INT,
+    @DryRunPassed BIT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRANSACTION;
+    TRY
+        -- Validate master-data consistency and schema constraints
+        EXEC dbo.usp_VerifyMasterDataIntegrity @EnvId = @EnvironmentId;
+        SET @DryRunPassed = 1;
+        COMMIT TRANSACTION;
+    CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH;
+END;`,
+    uat: `// Hybrid Agile / Client UAT Acceptance Flow
+const UATWorkflow = {
+  phases: ['Dry Run Verification', 'Pilot Testing', 'Client Stakeholder UAT', 'Go-Live Cutover'],
+  tracking: 'Redmine Milestones',
+  governance: 'Risk & Dependency Matrix',
+  handover: 'End-user Training & Knowledge Transfer'
+};`,
+  };
 
   return (
     <section id="about" className="section-wrapper">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
-          <div className="section-tag">
-            <User size={14} />
-            <span>Identity &amp; Philosophy</span>
+        <div style={{ marginBottom: '60px' }}>
+          <div className="section-eyebrow">
+            <span>[02 // PHILOSOPHY]</span>
+            <span>Engineering Discipline</span>
           </div>
-          <h2 className="section-title">
-            About <span className="text-gradient">Me</span>
+          <h2 className="section-headline">
+            System Design &amp; <br />
+            <span style={{ color: 'var(--acid-lime)' }}>Technical Architecture.</span>
           </h2>
-          <p className="section-subtitle">
-            Engineering robust web systems, enterprise database architectures, and end-to-end client solutions.
-          </p>
         </div>
 
-        {/* Dual Column Layout: Code Manifest Window + Pillars */}
+        {/* Blueprint Layout */}
         <div
           style={{
             display: 'grid',
@@ -68,217 +76,119 @@ export default function About() {
             alignItems: 'stretch',
           }}
         >
-          {/* Left: IDE Code Window */}
+          {/* Left Column: Principles */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {[
+              {
+                num: '01',
+                title: 'Client-Facing Pragmatism',
+                desc: 'Bridge the gap between executive business requirements and technical execution. Delivering functional systems, conducting UAT pilot runs, and ensuring zero-downtime cutovers.',
+              },
+              {
+                num: '02',
+                title: 'Zero-Trust Data Boundaries',
+                desc: 'Never trust client payloads. All access is protected by Row Level Security (RLS) policies in PostgreSQL, stored procedures in Microsoft SQL Server, and server-side DOMPurify sanitization.',
+              },
+              {
+                num: '03',
+                title: 'High-Velocity Full-Stack Delivery',
+                desc: 'Modern web architectures built on Next.js 16, React 19, TypeScript, and Tailwind CSS 4. Fast, SEO-optimized, accessible, and structured for long-term maintainability.',
+              },
+            ].map((principle) => (
+              <div
+                key={principle.num}
+                className="arch-card"
+                style={{ padding: '28px' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '12px' }}>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.88rem',
+                      color: 'var(--acid-lime)',
+                      fontWeight: 700,
+                    }}
+                  >
+                    [{principle.num}]
+                  </span>
+                  <h3 style={{ fontSize: '1.25rem', color: '#fff' }}>{principle.title}</h3>
+                </div>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: '1.65' }}>
+                  {principle.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column: Interactive Code & Architecture Inspector */}
           <div
-            className="glass-panel"
+            className="arch-card"
             style={{
-              borderRadius: '20px',
-              overflow: 'hidden',
-              background: 'rgba(5, 9, 24, 0.85)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              padding: '28px',
               display: 'flex',
               flexDirection: 'column',
+              background: '#0a0b10',
             }}
           >
-            {/* Editor Top Bar */}
+            {/* Header Tabs */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '12px 18px',
-                background: 'rgba(3, 6, 17, 0.95)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                paddingBottom: '16px',
+                borderBottom: '1px solid var(--border-hairline)',
+                marginBottom: '20px',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }} />
-                <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }} />
-                <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }} />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.8rem',
-                    color: '#94a3b8',
-                    marginLeft: '8px',
-                  }}
-                >
-                  developer_profile.ts
-                </span>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {[
+                  { id: 'fullstack', label: 'Next.js Actions' },
+                  { id: 'sql', label: 'MS SQL Server' },
+                  { id: 'uat', label: 'UAT Delivery' },
+                ].map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => {
+                      sound.playClick();
+                      setActiveTab(t.id);
+                    }}
+                    style={{
+                      background: activeTab === t.id ? 'rgba(198, 255, 0, 0.12)' : 'rgba(255, 255, 255, 0.04)',
+                      border: activeTab === t.id ? '1px solid var(--acid-lime)' : '1px solid var(--border-hairline)',
+                      color: activeTab === t.id ? 'var(--acid-lime)' : 'var(--text-muted)',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.78rem',
+                      padding: '6px 12px',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s',
+                    }}
+                  >
+                    {t.label}
+                  </button>
+                ))}
               </div>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.75rem',
-                  color: 'var(--cyan)',
-                }}
-              >
-                TypeScript 5 // Production
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
+                VERIFIED SYNTAX
               </span>
             </div>
 
-            {/* Code Body */}
-            <div
+            {/* Code Output */}
+            <pre
               style={{
-                padding: '24px',
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.88rem',
-                lineHeight: '1.7',
-                color: '#cbd5e1',
+                fontSize: '0.82rem',
+                color: '#d4d4d8',
+                lineHeight: '1.65',
+                overflowX: 'auto',
+                whiteSpace: 'pre-wrap',
                 flex: 1,
               }}
             >
-              <p style={{ color: '#64748b', marginBottom: '8px' }}>
-                // Full-stack engineering &amp; client-facing solutions delivery
-              </p>
-              <p>
-                <span style={{ color: '#f43f5e' }}>interface</span>{' '}
-                <span style={{ color: '#facc15' }}>SoftwareEngineer</span> &#123;
-              </p>
-              <p style={{ paddingLeft: '20px' }}>name: <span style={{ color: '#38bdf8' }}>string</span>;</p>
-              <p style={{ paddingLeft: '20px' }}>role: <span style={{ color: '#38bdf8' }}>string</span>;</p>
-              <p style={{ paddingLeft: '20px' }}>fullStackStack: <span style={{ color: '#38bdf8' }}>string[]</span>;</p>
-              <p style={{ paddingLeft: '20px' }}>databaseSystems: <span style={{ color: '#38bdf8' }}>string[]</span>;</p>
-              <p style={{ paddingLeft: '20px' }}>deliverySkills: <span style={{ color: '#38bdf8' }}>string[]</span>;</p>
-              <p>&#125;</p>
-              <br />
-              <p>
-                <span style={{ color: '#38bdf8' }}>const</span>{' '}
-                <span style={{ color: '#60a5fa' }}>gAbhinav</span>:{' '}
-                <span style={{ color: '#facc15' }}>SoftwareEngineer</span> = &#123;
-              </p>
-              <p style={{ paddingLeft: '20px' }}>
-                name: <span style={{ color: '#4ade80' }}>"G Abhinav"</span>,
-              </p>
-              <p style={{ paddingLeft: '20px' }}>
-                role: <span style={{ color: '#4ade80' }}>"Full-Stack Web Developer &amp; Solutions Dev"</span>,
-              </p>
-              <p style={{ paddingLeft: '20px' }}>
-                fullStackStack: [
-              </p>
-              <p style={{ paddingLeft: '40px', color: '#4ade80' }}>
-                "Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Server Actions"
-              </p>
-              <p style={{ paddingLeft: '20px' }}>],</p>
-              <p style={{ paddingLeft: '20px' }}>
-                databaseSystems: [
-              </p>
-              <p style={{ paddingLeft: '40px', color: '#4ade80' }}>
-                "Microsoft SQL Server", "SSMS", "SSRS", "PostgreSQL", "Supabase", "RLS"
-              </p>
-              <p style={{ paddingLeft: '20px' }}>],</p>
-              <p style={{ paddingLeft: '20px' }}>
-                deliverySkills: [
-              </p>
-              <p style={{ paddingLeft: '40px', color: '#4ade80' }}>
-                "Client-Facing UAT", "Go-Live Deployments", "Server Setup (IIS)", "DNS Cutover"
-              </p>
-              <p style={{ paddingLeft: '20px' }}>],</p>
-              <p>&#125;;</p>
-            </div>
-          </div>
-
-          {/* Right: Core Pillars Grid */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '18px',
-            }}
-          >
-            {highlights.map((item, idx) => (
-              <TiltCard key={idx} maxTilt={10} scale={1.02}>
-                <div
-                  className="glass-panel"
-                  style={{
-                    padding: '22px',
-                    height: '100%',
-                    borderRadius: '16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: '46px',
-                      height: '46px',
-                      borderRadius: '12px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {item.icon}
-                  </div>
-                  <h3 style={{ fontSize: '1.15rem' }}>{item.title}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                    {item.desc}
-                  </p>
-                </div>
-              </TiltCard>
-            ))}
-          </div>
-        </div>
-
-        {/* Interests & Hobbies ("When I'm Not Coding...") */}
-        <div style={{ marginTop: '50px' }}>
-          <h3
-            style={{
-              fontSize: '1.25rem',
-              color: '#e2e8f0',
-              marginBottom: '20px',
-              textAlign: 'center',
-            }}
-          >
-            When I'm not writing code...
-          </h3>
-
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '16px',
-            }}
-          >
-            {interests.map((interest, idx) => (
-              <div
-                key={idx}
-                className="glass-panel"
-                style={{
-                  padding: '16px 20px',
-                  borderRadius: '14px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '14px',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
-                }}
-              >
-                <div
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {interest.icon}
-                </div>
-                <div>
-                  <div style={{ fontWeight: 600, color: '#fff', fontSize: '0.95rem' }}>
-                    {interest.title}
-                  </div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                    {interest.tag}
-                  </div>
-                </div>
-              </div>
-            ))}
+              {snippets[activeTab]}
+            </pre>
           </div>
         </div>
       </div>

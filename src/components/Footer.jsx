@@ -1,8 +1,10 @@
-import { ArrowUp, Code2 } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
+import { sound } from '../utils/sound';
 
 export default function Footer() {
   const scrollToTop = () => {
+    sound.playClick();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -10,137 +12,101 @@ export default function Footer() {
     <footer
       style={{
         position: 'relative',
-        background: 'rgba(3, 6, 17, 0.95)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-        paddingTop: '48px',
-        paddingBottom: '40px',
+        background: '#06070a',
+        borderTop: '1px solid var(--border-hairline)',
+        paddingTop: '64px',
+        paddingBottom: '48px',
         zIndex: 10,
       }}
     >
       <div className="container">
+        {/* Giant Outlined Typography Statement */}
+        <div style={{ marginBottom: '40px' }}>
+          <div
+            className="text-outline"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.5rem, 8vw, 6.5rem)',
+              lineHeight: 0.95,
+              fontWeight: 800,
+              userSelect: 'none',
+            }}
+          >
+            G ABHINAV
+          </div>
+        </div>
+
+        {/* Sub-bar */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            gap: '24px',
-            marginBottom: '32px',
+            gap: '20px',
+            paddingTop: '28px',
+            borderTop: '1px solid var(--border-hairline)',
           }}
         >
-          {/* Logo & Philosophy */}
-          <div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontFamily: 'var(--font-display)',
-                fontWeight: 800,
-                fontSize: '1.25rem',
-                color: '#fff',
-                marginBottom: '8px',
-              }}
-            >
-              <span>G</span>
-              <span style={{ color: 'var(--cyan)' }}>Abhinav</span>
-            </div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', maxWidth: '380px' }}>
-              Crafting intelligent systems, high-utility Android apps, and interactive web experiences.
-            </p>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--text-dim)' }}>
+            &copy; {new Date().getFullYear()} G Abhinav • Full-Stack Web Developer &amp; Solutions
           </div>
 
-          {/* Socials & Back to Top */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <a
               href="https://github.com/G-Abhinav01"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              style={{
-                color: 'var(--text-muted)',
-                transition: 'color 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--cyan)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              data-cursor="GITHUB"
+              onMouseEnter={() => sound.playHover()}
+              style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }}
+              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--acid-lime)')}
+              onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
             >
-              <GithubIcon size={20} />
+              <GithubIcon size={18} />
             </a>
 
             <a
               href="https://www.linkedin.com/in/g-abhinav-138a39252/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              style={{
-                color: 'var(--text-muted)',
-                transition: 'color 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--cyan)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              data-cursor="LINKEDIN"
+              onMouseEnter={() => sound.playHover()}
+              style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }}
+              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--acid-lime)')}
+              onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
             >
-              <LinkedinIcon size={20} />
+              <LinkedinIcon size={18} />
             </a>
 
             <a
               href="https://x.com/GAbhinav_001"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="X Twitter"
-              style={{
-                color: 'var(--text-muted)',
-                transition: 'color 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--cyan)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
+              data-cursor="X"
+              onMouseEnter={() => sound.playHover()}
+              style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }}
+              onMouseOver={(e) => (e.currentTarget.style.color = 'var(--acid-lime)')}
+              onMouseOut={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
             >
-              <TwitterIcon size={20} />
+              <TwitterIcon size={18} />
             </a>
 
             <button
               type="button"
               onClick={scrollToTop}
-              aria-label="Back to top"
-              className="btn-cyber-outline"
+              data-cursor="TOP"
+              className="btn-ghost-kinetic"
               style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 padding: 0,
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                borderRadius: '10px',
+                marginLeft: '8px',
               }}
             >
-              <ArrowUp size={18} />
+              <ArrowUp size={16} />
             </button>
-          </div>
-        </div>
-
-        {/* Bottom Sub-bar */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '12px',
-            paddingTop: '24px',
-            borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-            fontSize: '0.82rem',
-            fontFamily: 'var(--font-mono)',
-            color: '#64748b',
-          }}
-        >
-          <div>&copy; {new Date().getFullYear()} G Abhinav. All rights reserved.</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <span>Engineered with React 19 + Vite + Three.js</span>
           </div>
         </div>
       </div>
