@@ -42,7 +42,7 @@ export default function InteractiveTerminal() {
           type: 'response',
           text: `[G ABHINAV]
 Role: Full-Stack Web Developer & Technical Solutions Consultant
-Experience: Client-Facing Implementation (Force Intellect), AIML Trainee (Techonet)
+Experience: Technical Implementation (STPI Bhilai), AIML Trainee (Techonet)
 Education: B.Tech in Computer Science (AI & ML) @ SSTC (2022 - 2026)
 Focus: Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT, and cloud deployments.`,
         });

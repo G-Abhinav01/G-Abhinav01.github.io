@@ -49,7 +49,7 @@ export default function Hero() {
                 color: 'var(--text-dim)',
               }}
             >
-              [STPI BHILAI // 2026]
+              [FULL-STACK // 2026]
             </span>
           </div>
 

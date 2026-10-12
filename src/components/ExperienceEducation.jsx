@@ -6,7 +6,7 @@ export default function ExperienceEducation() {
     {
       period: 'Apr 2026 — Present',
       role: 'Technical Solutions & Client-Facing Implementation',
-      company: 'Force Intellect Pvt. Ltd. — STPI Bhilai',
+      company: 'STPI Bhilai, Chhattisgarh',
       location: 'Bhilai, Chhattisgarh',
       summary:
         'Translating enterprise business requirements into system configurations, database procedures, UAT validation, and production support across core operational workflows.',
