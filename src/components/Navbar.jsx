@@ -162,7 +162,7 @@ export default function Navbar() {
 
           {/* Resume Link */}
           <a
-            href="https://drive.google.com/file/d/1Fp78dHZzr_OlKjfPPCVcBUrxTEmFB8pm/view?usp=drivesdk"
+            href="https://drive.google.com/file/d/1EK7DX-XF90pNxIkMzqQczs4ENNMKBsrr/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="RESUME"

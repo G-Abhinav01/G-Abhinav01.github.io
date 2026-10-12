@@ -6,6 +6,8 @@ export default function Hero() {
   const marqueeItems = [
     'NEXT.JS 16 APP ROUTER',
     'REACT 19',
+    'C++ & DSA',
+    'PYTHON',
     'SUPABASE POSTGRESQL',
     'ROW LEVEL SECURITY (RLS)',
     'MICROSOFT SQL SERVER',
@@ -74,6 +76,7 @@ export default function Hero() {
           >
             I engineer production web platforms with <strong style={{ color: '#fff' }}>Next.js 16</strong>,{' '}
             <strong style={{ color: '#fff' }}>React 19</strong>, and <strong style={{ color: '#fff' }}>TypeScript</strong>,{' '}
+            grounded in strong <strong style={{ color: '#fff' }}>C++</strong> and <strong style={{ color: '#fff' }}>Python</strong> fundamentals,{' '}
             while leading enterprise database implementations with <strong style={{ color: '#fff' }}>Microsoft SQL Server</strong>,{' '}
             <strong style={{ color: '#fff' }}>SSMS</strong>, and client-facing UAT go-lives.
           </p>
@@ -100,7 +103,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1Fp78dHZzr_OlKjfPPCVcBUrxTEmFB8pm/view?usp=drivesdk"
+              href="https://drive.google.com/file/d/1EK7DX-XF90pNxIkMzqQczs4ENNMKBsrr/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="PDF"

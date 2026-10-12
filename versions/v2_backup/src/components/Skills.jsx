@@ -1,11 +1,23 @@
 import { useState } from 'react';
-import { Layers, Globe, Database, ShieldCheck, Users2, Check } from 'lucide-react';
+import { Layers, Globe, Database, ShieldCheck, Users2, Check, Terminal } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 export default function Skills() {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const skillDomains = [
+    {
+      domain: 'languages',
+      label: 'Core Languages & DSA',
+      icon: <Terminal size={16} />,
+      items: [
+        { name: 'C++', tag: 'OOP & DSA', desc: 'Data Structures & Algorithms, Object-Oriented Programming (OOP), STL containers, memory models' },
+        { name: 'Python', tag: 'DATA & ML', desc: 'Data preprocessing pipelines, automated workflows, AI integrations, algorithmic problem-solving' },
+        { name: 'TypeScript 5', tag: 'TYPE SAFETY', desc: 'Strict interfaces, generated DB types, generic utilities, compile-time type verification' },
+        { name: 'JavaScript (ES6+)', tag: 'WEB RUNTIME', desc: 'Async/await, event loops, DOM manipulation, functional programming patterns' },
+        { name: 'SQL', tag: 'RELATIONAL QUERYING', desc: 'Complex querying, stored procedures, multi-table joins, indexing & query execution' },
+      ],
+    },
     {
       domain: 'fullstack',
       label: 'Full-Stack Web',

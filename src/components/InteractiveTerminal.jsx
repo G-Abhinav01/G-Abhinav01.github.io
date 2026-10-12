@@ -44,7 +44,7 @@ export default function InteractiveTerminal() {
 Role: Full-Stack Web Developer & Technical Solutions Consultant
 Experience: Technical Implementation (STPI Bhilai), AIML Trainee (Techonet)
 Education: B.Tech in Computer Science (AI & ML) @ SSTC (2022 - 2026)
-Focus: Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT, and cloud deployments.`,
+Focus: C++, Python, Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT.`,
         });
         break;
 
@@ -86,10 +86,10 @@ Focus: Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT, and cloud dep
       case 'resume':
         newHistory.push({
           type: 'response',
-          text: `Opening Resume... Link: https://drive.google.com/file/d/1Fp78dHZzr_OlKjfPPCVcBUrxTEmFB8pm/view?usp=drivesdk`,
+          text: `Opening Resume... Link: https://drive.google.com/file/d/1EK7DX-XF90pNxIkMzqQczs4ENNMKBsrr/view?usp=drive_link`,
         });
         window.open(
-          'https://drive.google.com/file/d/1Fp78dHZzr_OlKjfPPCVcBUrxTEmFB8pm/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1EK7DX-XF90pNxIkMzqQczs4ENNMKBsrr/view?usp=drive_link',
           '_blank'
         );
         break;

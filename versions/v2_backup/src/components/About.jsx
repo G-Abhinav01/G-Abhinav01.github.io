@@ -43,6 +43,23 @@ BEGIN
         THROW;
     END CATCH;
 END;`,
+    cpp: `// C++: Algorithmic Systems & Memory Efficiency
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+template <typename Key, typename Value>
+class CacheManager {
+private:
+    std::unordered_map<Key, Value> lookup;
+public:
+    void put(const Key& k, const Value& v) {
+        lookup[k] = v;
+    }
+    bool exists(const Key& k) const {
+        return lookup.find(k) != lookup.end();
+    }
+};`,
     uat: `// Hybrid Agile / Client UAT Acceptance Flow
 const UATWorkflow = {
   phases: ['Dry Run Verification', 'Pilot Testing', 'Client Stakeholder UAT', 'Go-Live Cutover'],
@@ -145,6 +162,7 @@ const UATWorkflow = {
                 {[
                   { id: 'fullstack', label: 'Next.js Actions' },
                   { id: 'sql', label: 'MS SQL Server' },
+                  { id: 'cpp', label: 'C++ & Algorithms' },
                   { id: 'uat', label: 'UAT Delivery' },
                 ].map((t) => (
                   <button
