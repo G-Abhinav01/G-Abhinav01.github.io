@@ -16,9 +16,12 @@ Version 2 is the studio-grade, creative developer redesign built to completely r
   - Monumental grotesque typography with outlined display headings (`text-outline`).
   - Marquee velocity ribbon with infinite kinetic scrolling.
 
-- **Interactive 3D Experience (`FluidCoreCanvas.jsx`):**
+- **Interactive 3D Experience (`FluidCoreCanvas.jsx` & 3D Glass Portrait Card):**
   - Custom Three.js liquid chrome metallic sphere with real-time simplex vertex noise wave displacement.
   - Multi-point studio lighting with iridescent reflections reacting smoothly to cursor movement and inertia.
+  - Compact **3D Tilt Parallax Glass Portrait Card** in Hero featuring user's profile photo (`/Images/profile.jpg`), rotating conic-gradient ambient halo, live online telemetry indicator, and physics-based mouse tilt with specular highlights.
+  - Core Languages reinstated: **C++ & DSA**, **Python**, TypeScript, JavaScript, SQL.
+  - Updated Resume Link: `https://drive.google.com/file/d/1EK7DX-XF90pNxIkMzqQczs4ENNMKBsrr/view?usp=drive_link`.
 
 - **Audio Synthesizer Engine (`sound.js`):**
   - Native browser Web Audio API synthesizer generating tactile micro-clicks and blips on user interactions.
