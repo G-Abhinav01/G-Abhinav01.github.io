@@ -150,30 +150,34 @@ Focus: C++, Python, Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT.`
           padding: '12px 18px',
           background: 'rgba(5, 8, 20, 0.9)',
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          gap: '8px',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }} />
-          <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }} />
-          <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }} />
-          <span style={{ marginLeft: '8px', fontSize: '0.8rem', color: '#94a3b8' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+          <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ff5f56', flexShrink: 0 }} />
+          <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ffbd2e', flexShrink: 0 }} />
+          <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#27c93f', flexShrink: 0 }} />
+          <span className="term-full-path" style={{ marginLeft: '6px', fontSize: '0.78rem', color: '#94a3b8', whiteSpace: 'nowrap' }}>
             abhinav@fullstack-workstation:~ (zsh)
           </span>
+          <span className="term-short-path" style={{ display: 'none', marginLeft: '6px', fontSize: '0.75rem', color: '#94a3b8' }}>
+            abhinav:~
+          </span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: 'var(--cyan)' }}>
-          <Sparkles size={14} />
-          <span>PRODUCTION SHELL</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', color: 'var(--acid-lime)', flexShrink: 0 }}>
+          <Sparkles size={13} />
+          <span>SHELL v2</span>
         </div>
       </div>
 
       {/* Terminal Output */}
       <div
         style={{
-          padding: '20px',
-          minHeight: '260px',
+          padding: 'clamp(14px, 3vw, 20px)',
+          minHeight: '240px',
           maxHeight: '340px',
           overflowY: 'auto',
-          fontSize: '0.88rem',
+          fontSize: 'clamp(0.78rem, 2vw, 0.88rem)',
           lineHeight: '1.6',
         }}
       >
@@ -183,9 +187,10 @@ Focus: C++, Python, Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT.`
             style={{
               marginBottom: '10px',
               whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word',
               color:
                 item.type === 'user'
-                  ? 'var(--cyan)'
+                  ? 'var(--acid-lime)'
                   : item.type === 'error'
                   ? '#f87171'
                   : item.type === 'system'
@@ -201,38 +206,40 @@ Focus: C++, Python, Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT.`
 
       {/* Quick Action Badges */}
       <div
+        className="touch-scroll-row"
         style={{
-          padding: '10px 18px',
+          padding: '8px 14px',
           background: 'rgba(5, 8, 20, 0.6)',
           borderTop: '1px solid rgba(255, 255, 255, 0.05)',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: '8px',
+          gap: '6px',
           alignItems: 'center',
         }}
       >
-        <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Presets:</span>
+        <span style={{ fontSize: '0.72rem', color: '#64748b' }}>Presets:</span>
         {['skills', 'projects', 'resume', 'contact', 'confetti', 'clear'].map((cmd) => (
           <button
             key={cmd}
             type="button"
             onClick={() => handleCommand(cmd)}
             style={{
-              background: 'rgba(0, 242, 254, 0.08)',
-              border: '1px solid rgba(0, 242, 254, 0.2)',
+              background: 'rgba(198, 255, 0, 0.08)',
+              border: '1px solid rgba(198, 255, 0, 0.2)',
               borderRadius: '6px',
-              color: 'var(--cyan)',
-              fontSize: '0.75rem',
-              padding: '3px 10px',
+              color: 'var(--acid-lime)',
+              fontSize: '0.72rem',
+              padding: '3px 8px',
               cursor: 'pointer',
               fontFamily: 'var(--font-mono)',
               transition: 'all 0.2s',
+              whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(0, 242, 254, 0.2)';
+              e.currentTarget.style.background = 'rgba(198, 255, 0, 0.2)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(0, 242, 254, 0.08)';
+              e.currentTarget.style.background = 'rgba(198, 255, 0, 0.08)';
             }}
           >
             {cmd}
@@ -246,24 +253,24 @@ Focus: C++, Python, Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT.`
         style={{
           display: 'flex',
           alignItems: 'center',
-          padding: '12px 18px',
+          padding: '10px 14px',
           background: 'rgba(12, 18, 42, 0.9)',
           borderTop: '1px solid rgba(255, 255, 255, 0.08)',
         }}
       >
-        <span style={{ color: 'var(--cyan)', marginRight: '8px', fontWeight: 'bold' }}>&gt;</span>
+        <span style={{ color: 'var(--acid-lime)', marginRight: '8px', fontWeight: 'bold' }}>&gt;</span>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type command ('help', 'skills', 'projects', 'resume')..."
+          placeholder="Type command ('help', 'projects', 'skills')..."
           style={{
             flex: 1,
             background: 'transparent',
             border: 'none',
             color: '#fff',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.9rem',
+            fontSize: '16px', // 16px prevents iOS Safari auto-zoom
             outline: 'none',
           }}
         />
@@ -273,9 +280,9 @@ Focus: C++, Python, Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT.`
           style={{
             background: 'transparent',
             border: 'none',
-            color: 'var(--cyan)',
+            color: 'var(--acid-lime)',
             cursor: 'pointer',
-            padding: '4px',
+            padding: '6px',
             display: 'flex',
             alignItems: 'center',
           }}
@@ -283,6 +290,17 @@ Focus: C++, Python, Next.js 16, React 19, TypeScript, MS SQL Server, SSMS, UAT.`
           <CornerDownLeft size={16} />
         </button>
       </form>
+
+      <style>{`
+        @media (max-width: 540px) {
+          .term-full-path {
+            display: none !important;
+          }
+          .term-short-path {
+            display: inline !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

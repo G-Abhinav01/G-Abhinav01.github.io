@@ -324,8 +324,8 @@ const UATWorkflow = {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '36px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+            gap: '28px',
             alignItems: 'stretch',
           }}
         >
@@ -351,7 +351,7 @@ const UATWorkflow = {
               <div
                 key={principle.num}
                 className="arch-card"
-                style={{ padding: '28px' }}
+                style={{ padding: 'clamp(18px, 3vw, 28px)' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '12px' }}>
                   <span
@@ -394,7 +394,7 @@ const UATWorkflow = {
                 marginBottom: '20px',
               }}
             >
-              <div style={{ display: 'flex', gap: '8px' }}>
+              <div className="inspector-tabs-row touch-scroll-row" style={{ display: 'flex', gap: '8px', paddingBottom: '4px' }}>
                 {[
                   { id: 'fullstack', label: 'Next.js Actions' },
                   { id: 'sql', label: 'MS SQL Server' },
@@ -413,10 +413,11 @@ const UATWorkflow = {
                       border: activeTab === t.id ? '1px solid var(--acid-lime)' : '1px solid var(--border-hairline)',
                       color: activeTab === t.id ? 'var(--acid-lime)' : 'var(--text-muted)',
                       fontFamily: 'var(--font-mono)',
-                      fontSize: '0.78rem',
+                      fontSize: '0.76rem',
                       padding: '6px 12px',
                       borderRadius: '8px',
                       cursor: 'pointer',
+                      whiteSpace: 'nowrap',
                       transition: 'all 0.2s',
                     }}
                   >
@@ -424,7 +425,7 @@ const UATWorkflow = {
                   </button>
                 ))}
               </div>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
+              <span className="inspector-badge" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
                 VERIFIED SYNTAX
               </span>
             </div>
@@ -433,12 +434,14 @@ const UATWorkflow = {
             <pre
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.82rem',
+                fontSize: 'clamp(0.72rem, 1.8vw, 0.82rem)',
                 color: '#d4d4d8',
                 lineHeight: '1.65',
                 overflowX: 'auto',
                 whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
                 flex: 1,
+                maxWidth: '100%',
               }}
             >
               {snippets[activeTab]}
@@ -452,11 +455,24 @@ const UATWorkflow = {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        @media (max-width: 860px) {
+        @media (max-width: 960px) {
           .about-profile-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
-            padding: 24px !important;
+            padding: 28px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .about-profile-grid {
+            padding: 20px 16px !important;
+            border-radius: 20px !important;
+            gap: 24px !important;
+          }
+          .inspector-badge {
+            display: none !important;
+          }
+          .inspector-tabs-row {
+            width: 100% !important;
           }
         }
       `}</style>

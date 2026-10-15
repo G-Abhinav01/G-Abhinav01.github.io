@@ -293,14 +293,14 @@ h1, h2, h3, h4, h5, h6 {
   max-width: var(--max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
 }
 
 .section-wrapper {
   position: relative;
-  padding-top: 130px;
-  padding-bottom: 130px;
+  padding-top: clamp(64px, 10vw, 130px);
+  padding-bottom: clamp(64px, 10vw, 130px);
   z-index: 1;
 }
 
@@ -309,25 +309,63 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 1.8vw, 0.85rem);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--acid-lime);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .section-headline {
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 1.05;
+  font-size: clamp(1.85rem, 5vw, 4.2rem);
+  line-height: 1.08;
   margin-bottom: 20px;
+  word-break: break-word;
+}
+
+/* Scrollable Touch Strip Utility */
+.touch-scroll-row {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.touch-scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tablet & Mobile Media Queries */
+@media (max-width: 1024px) {
+  .display-huge {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    line-height: 0.95;
+  }
 }
 
 @media (max-width: 768px) {
-  .section-wrapper {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
   .kinetic-cursor-dot, .kinetic-cursor-lens {
     display: none !important;
+  }
+  .arch-card {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .display-huge {
+    font-size: clamp(2.2rem, 10.5vw, 3.4rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    word-break: break-word;
+  }
+  .btn-primary-kinetic, .btn-ghost-kinetic {
+    padding: 13px 20px;
+    font-size: 0.88rem;
+    border-radius: 12px;
+  }
+  .accent-pill {
+    font-size: 0.72rem;
+    padding: 5px 12px;
   }
 }

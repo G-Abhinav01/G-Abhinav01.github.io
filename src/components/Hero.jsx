@@ -28,8 +28,8 @@ export default function Hero() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        paddingTop: '130px',
-        paddingBottom: '40px',
+        paddingTop: 'clamp(95px, 14vw, 140px)',
+        paddingBottom: 'clamp(30px, 6vw, 50px)',
         overflow: 'hidden',
       }}
     >
@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: '980px' }}>
           {/* Eyebrow Label */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
             <span className="accent-pill">
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--acid-lime)' }} />
               Client-Facing Solutions &amp; Full-Stack Systems
@@ -47,7 +47,7 @@ export default function Hero() {
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.8rem',
+                fontSize: '0.76rem',
                 color: 'var(--text-dim)',
               }}
             >
@@ -64,118 +64,149 @@ export default function Hero() {
             <span style={{ color: 'var(--text-pure)' }}>&amp; DEVELOPER.</span>
           </h1>
 
-            {/* Editorial Lead Paragraph */}
-            <p
-              style={{
-                fontSize: 'clamp(1.15rem, 2vw, 1.45rem)',
-                color: 'var(--text-muted)',
-                lineHeight: '1.5',
-                maxWidth: '680px',
-                marginBottom: '36px',
-              }}
+          {/* Editorial Lead Paragraph */}
+          <p
+            style={{
+              fontSize: 'clamp(1rem, 2vw, 1.45rem)',
+              color: 'var(--text-muted)',
+              lineHeight: '1.55',
+              maxWidth: '680px',
+              marginBottom: '32px',
+            }}
+          >
+            I engineer production web platforms with <strong style={{ color: '#fff' }}>Next.js 16</strong>,{' '}
+            <strong style={{ color: '#fff' }}>React 19</strong>, and <strong style={{ color: '#fff' }}>TypeScript</strong>,{' '}
+            grounded in strong <strong style={{ color: '#fff' }}>C++</strong> and <strong style={{ color: '#fff' }}>Python</strong> fundamentals,{' '}
+            while leading enterprise database implementations with <strong style={{ color: '#fff' }}>Microsoft SQL Server</strong>,{' '}
+            <strong style={{ color: '#fff' }}>SSMS</strong>, and client-facing UAT go-lives.
+          </p>
+
+          {/* Kinetic Actions */}
+          <div className="hero-actions">
+            <a
+              href="#projects"
+              data-cursor="INSPECT"
+              className="btn-primary-kinetic hero-btn-main"
+              onMouseEnter={() => sound.playHover()}
+              onClick={() => sound.playClick()}
             >
-              I engineer production web platforms with <strong style={{ color: '#fff' }}>Next.js 16</strong>,{' '}
-              <strong style={{ color: '#fff' }}>React 19</strong>, and <strong style={{ color: '#fff' }}>TypeScript</strong>,{' '}
-              grounded in strong <strong style={{ color: '#fff' }}>C++</strong> and <strong style={{ color: '#fff' }}>Python</strong> fundamentals,{' '}
-              while leading enterprise database implementations with <strong style={{ color: '#fff' }}>Microsoft SQL Server</strong>,{' '}
-              <strong style={{ color: '#fff' }}>SSMS</strong>, and client-facing UAT go-lives.
-            </p>
+              <span>Explore Client Projects</span>
+              <ArrowUpRight size={18} />
+            </a>
 
-            {/* Kinetic Actions */}
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '16px',
-                alignItems: 'center',
-                marginBottom: '48px',
-              }}
+            <a
+              href="https://drive.google.com/file/d/1EK7DX-XF90pNxIkMzqQczs4ENNMKBsrr/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="PDF"
+              className="btn-ghost-kinetic hero-btn-sub"
+              onMouseEnter={() => sound.playHover()}
+              onClick={() => sound.playClick()}
             >
-              <a
-                href="#projects"
-                data-cursor="INSPECT"
-                className="btn-primary-kinetic"
-                onMouseEnter={() => sound.playHover()}
-                onClick={() => sound.playClick()}
-              >
-                <span>Explore Client Projects</span>
-                <ArrowUpRight size={18} />
-              </a>
+              <FileText size={18} />
+              <span>Full Resume</span>
+            </a>
 
-              <a
-                href="https://drive.google.com/file/d/1EK7DX-XF90pNxIkMzqQczs4ENNMKBsrr/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="PDF"
-                className="btn-ghost-kinetic"
-                onMouseEnter={() => sound.playHover()}
-                onClick={() => sound.playClick()}
-              >
-                <FileText size={18} />
-                <span>Full Resume</span>
-              </a>
-
-              <a
-                href="#terminal"
-                data-cursor="SHELL"
-                className="btn-ghost-kinetic"
-                style={{ padding: '15px 20px' }}
-                title="Interactive Terminal"
-                onMouseEnter={() => sound.playHover()}
-                onClick={() => sound.playClick()}
-              >
-                <Terminal size={18} color="var(--acid-lime)" />
-              </a>
-            </div>
-
-            {/* Architectural Metrics Bar */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                gap: '20px',
-                paddingTop: '32px',
-                borderTop: '1px solid var(--border-hairline)',
-              }}
+            <a
+              href="#terminal"
+              data-cursor="SHELL"
+              className="btn-ghost-kinetic hero-btn-term"
+              title="Interactive Terminal"
+              onMouseEnter={() => sound.playHover()}
+              onClick={() => sound.playClick()}
             >
-              <div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)', marginBottom: '4px' }}>
-                  FLAGSHIP CLIENT SYSTEM
-                </div>
-                <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#fff' }}>
-                  India24x7.live
-                </div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--acid-lime)', fontFamily: 'var(--font-mono)' }}>
-                  7 Dynamic CMS Modules • Netlify
-                </div>
+              <Terminal size={18} color="var(--acid-lime)" />
+            </a>
+          </div>
+
+          {/* Architectural Metrics Bar */}
+          <div className="hero-metrics-grid">
+            <div className="hero-metric-card">
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)', marginBottom: '4px', letterSpacing: '0.06em' }}>
+                FLAGSHIP CLIENT SYSTEM
               </div>
-
-              <div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)', marginBottom: '4px' }}>
-                  ENTERPRISE STACK
-                </div>
-                <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#fff' }}>
-                  Microsoft SQL Server
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#818cf8', fontFamily: 'var(--font-mono)' }}>
-                  SSMS • SSRS • IIS • Stored Procs
-                </div>
+              <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#fff' }}>
+                India24x7.live
               </div>
-
-              <div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)', marginBottom: '4px' }}>
-                  DELIVERY SPECIALTY
-                </div>
-                <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#fff' }}>
-                  Client-Facing UAT
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#e4e4e7', fontFamily: 'var(--font-mono)' }}>
-                  Dry Runs • Pilot • Go-Live
-                </div>
+              <div style={{ fontSize: '0.8rem', color: 'var(--acid-lime)', fontFamily: 'var(--font-mono)' }}>
+                7 Dynamic CMS Modules • Netlify
               </div>
             </div>
+
+            <div className="hero-metric-card">
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)', marginBottom: '4px', letterSpacing: '0.06em' }}>
+                ENTERPRISE STACK
+              </div>
+              <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#fff' }}>
+                Microsoft SQL Server
+              </div>
+              <div style={{ fontSize: '0.8rem', color: '#818cf8', fontFamily: 'var(--font-mono)' }}>
+                SSMS • SSRS • IIS • Stored Procs
+              </div>
+            </div>
+
+            <div className="hero-metric-card">
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)', marginBottom: '4px', letterSpacing: '0.06em' }}>
+                DELIVERY SPECIALTY
+              </div>
+              <div style={{ fontWeight: 700, fontSize: '1.05rem', color: '#fff' }}>
+                Client-Facing UAT
+              </div>
+              <div style={{ fontSize: '0.8rem', color: '#e4e4e7', fontFamily: 'var(--font-mono)' }}>
+                Dry Runs • Pilot • Go-Live
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .hero-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 40px;
+        }
+        .hero-btn-term {
+          padding: 15px 20px;
+        }
+        .hero-metrics-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 20px;
+          padding-top: 28px;
+          border-top: 1px solid var(--border-hairline);
+        }
+
+        @media (max-width: 640px) {
+          .hero-actions {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 32px;
+          }
+          .hero-btn-main, .hero-btn-sub {
+            width: 100%;
+            justify-content: center;
+          }
+          .hero-btn-term {
+            display: none;
+          }
+          .hero-metrics-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding-top: 20px;
+          }
+          .hero-metric-card {
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          }
+          .hero-metric-card:last-child {
+            border-bottom: none;
+          }
+        }
+      `}</style>
 
       {/* Kinetic Velocity Marquee Ticker */}
       <div className="marquee-wrapper" style={{ marginTop: '60px' }}>

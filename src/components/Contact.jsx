@@ -63,15 +63,15 @@ export default function Contact() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '36px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: '32px',
             alignItems: 'stretch',
           }}
         >
           {/* Direct Channels Card */}
-          <div className="arch-card" style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="arch-card" style={{ padding: 'clamp(20px, 4vw, 36px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
-              <h3 style={{ fontSize: '1.45rem', color: '#fff', marginBottom: '8px' }}>
+              <h3 style={{ fontSize: 'clamp(1.25rem, 2.8vw, 1.45rem)', color: '#fff', marginBottom: '8px' }}>
                 Engineering Communication
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '28px' }}>
@@ -81,7 +81,7 @@ export default function Contact() {
               {/* Email Block */}
               <div
                 style={{
-                  padding: '16px 20px',
+                  padding: '14px 18px',
                   borderRadius: '12px',
                   background: 'rgba(255, 255, 255, 0.03)',
                   border: '1px solid var(--border-hairline)',
@@ -89,13 +89,15 @@ export default function Contact() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '12px',
                 }}
               >
-                <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
+                <div style={{ minWidth: '180px', flex: 1 }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)', marginBottom: '2px' }}>
                     PRIMARY EMAIL
                   </div>
-                  <div style={{ fontWeight: 600, fontSize: '0.92rem', color: '#fff' }}>
+                  <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#fff', wordBreak: 'break-all' }}>
                     {email}
                   </div>
                 </div>
@@ -116,6 +118,7 @@ export default function Contact() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '6px',
+                    flexShrink: 0,
                   }}
                 >
                   {copied ? <Check size={14} /> : <Copy size={14} />}
@@ -126,7 +129,7 @@ export default function Contact() {
               {/* Phone Block */}
               <div
                 style={{
-                  padding: '16px 20px',
+                  padding: '14px 18px',
                   borderRadius: '12px',
                   background: 'rgba(255, 255, 255, 0.03)',
                   border: '1px solid var(--border-hairline)',
@@ -134,10 +137,12 @@ export default function Contact() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '12px',
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)', marginBottom: '2px' }}>
                     DIRECT PHONE
                   </div>
                   <div style={{ fontWeight: 600, fontSize: '0.92rem', color: '#fff' }}>
@@ -158,6 +163,7 @@ export default function Contact() {
                     borderRadius: '8px',
                     background: 'rgba(255, 255, 255, 0.06)',
                     border: '1px solid var(--border-hairline)',
+                    flexShrink: 0,
                   }}
                 >
                   Call
@@ -166,7 +172,7 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div style={{ display: 'flex', gap: '12px' }}>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               {socials.map((s) => (
                 <a
                   key={s.name}
@@ -208,8 +214,8 @@ export default function Contact() {
           </div>
 
           {/* Form Card */}
-          <div className="arch-card" style={{ padding: '36px' }}>
-            <h3 style={{ fontSize: '1.45rem', color: '#fff', marginBottom: '8px' }}>
+          <div className="arch-card" style={{ padding: 'clamp(20px, 4vw, 36px)' }}>
+            <h3 style={{ fontSize: 'clamp(1.25rem, 2.8vw, 1.45rem)', color: '#fff', marginBottom: '8px' }}>
               Transmit Direct Message
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '24px' }}>
@@ -229,13 +235,13 @@ export default function Contact() {
                   placeholder="Ada Lovelace"
                   style={{
                     width: '100%',
-                    padding: '14px 16px',
+                    padding: '13px 16px',
                     borderRadius: '10px',
                     background: 'rgba(255, 255, 255, 0.03)',
                     border: '1px solid var(--border-hairline)',
                     color: '#fff',
                     fontFamily: 'var(--font-body)',
-                    fontSize: '0.95rem',
+                    fontSize: '16px',
                     outline: 'none',
                   }}
                 />
@@ -253,13 +259,13 @@ export default function Contact() {
                   placeholder="ada@domain.com"
                   style={{
                     width: '100%',
-                    padding: '14px 16px',
+                    padding: '13px 16px',
                     borderRadius: '10px',
                     background: 'rgba(255, 255, 255, 0.03)',
                     border: '1px solid var(--border-hairline)',
                     color: '#fff',
                     fontFamily: 'var(--font-body)',
-                    fontSize: '0.95rem',
+                    fontSize: '16px',
                     outline: 'none',
                   }}
                 />
@@ -277,13 +283,13 @@ export default function Contact() {
                   placeholder="Details regarding your platform or opportunity..."
                   style={{
                     width: '100%',
-                    padding: '14px 16px',
+                    padding: '13px 16px',
                     borderRadius: '10px',
                     background: 'rgba(255, 255, 255, 0.03)',
                     border: '1px solid var(--border-hairline)',
                     color: '#fff',
                     fontFamily: 'var(--font-body)',
-                    fontSize: '0.95rem',
+                    fontSize: '16px',
                     outline: 'none',
                     resize: 'vertical',
                   }}

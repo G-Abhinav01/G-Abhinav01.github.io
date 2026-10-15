@@ -151,35 +151,35 @@ export default function Skills() {
         </div>
 
         {/* Domains Grid */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
           {filteredDomains.map((domain) => (
-            <div key={domain.domain} className="arch-card" style={{ padding: '32px' }}>
+            <div key={domain.domain} className="arch-card" style={{ padding: 'clamp(18px, 3.5vw, 32px)' }}>
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  marginBottom: '24px',
-                  paddingBottom: '16px',
+                  marginBottom: '20px',
+                  paddingBottom: '14px',
                   borderBottom: '1px solid var(--border-hairline)',
                 }}
               >
                 <div style={{ color: 'var(--acid-lime)' }}>{domain.icon}</div>
-                <h3 style={{ fontSize: '1.35rem', color: '#fff' }}>{domain.label}</h3>
+                <h3 style={{ fontSize: 'clamp(1.15rem, 2.5vw, 1.35rem)', color: '#fff' }}>{domain.label}</h3>
               </div>
 
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                  gap: '16px',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
+                  gap: '14px',
                 }}
               >
                 {domain.items.map((item, idx) => (
                   <div
                     key={idx}
                     style={{
-                      padding: '16px',
+                      padding: '14px 16px',
                       borderRadius: '12px',
                       background: 'rgba(255, 255, 255, 0.02)',
                       border: '1px solid var(--border-hairline)',
@@ -194,18 +194,19 @@ export default function Skills() {
                       e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                      <span style={{ fontWeight: 700, fontSize: '0.98rem', color: '#fff' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
+                      <span style={{ fontWeight: 700, fontSize: '0.94rem', color: '#fff' }}>
                         {item.name}
                       </span>
                       <span
                         style={{
                           fontFamily: 'var(--font-mono)',
-                          fontSize: '0.68rem',
+                          fontSize: '0.66rem',
                           color: 'var(--acid-lime)',
                           padding: '2px 6px',
                           borderRadius: '4px',
                           background: 'rgba(198, 255, 0, 0.08)',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {item.tag}

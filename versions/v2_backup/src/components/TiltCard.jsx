@@ -56,6 +56,12 @@ export default function TiltCard({
       className={`tilt-card-wrapper ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onTouchMove={(e) => {
+        if (e.touches && e.touches[0]) {
+          handleMouseMove(e.touches[0]);
+        }
+      }}
+      onTouchEnd={handleMouseLeave}
       onClick={onClick}
       style={{
         position: 'relative',

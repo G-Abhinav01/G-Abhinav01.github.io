@@ -56,6 +56,14 @@ Version 2 is the studio-grade, creative developer redesign built to completely r
   - Direct contact card with one-click email copy, phone call action, and message transmission.
   - Interactive CLI terminal with real reactive commands.
 
+- **Mobile & Tablet Responsive Architecture:**
+  - Fluid typography clamp scaling across display headlines (`clamp(2.2rem, 10.5vw, 8rem)`).
+  - Responsive container padding (`clamp(16px, 4vw, 32px)`) preventing clipping or awkward zoom-outs on 320px–420px mobile screens.
+  - Touch-momentum scrollable tab strips for Syntax Inspector and India24x7.live architecture tabs (`touch-scroll-row`).
+  - Mobile glass drawer navigation (`site-header`, `mobile-drawer`) with 48px+ touch targets and full-width resume CTA.
+  - Touch event listeners on `TiltCard` (`onTouchMove`) and `FluidCoreCanvas` (`touchmove`) enabling finger-controlled 3D parallax on mobile and tablets.
+  - 16px form input font sizing preventing iOS Safari auto-zoom on input focus.
+
 ---
 
 ## 2. Instant Rollback Instructions

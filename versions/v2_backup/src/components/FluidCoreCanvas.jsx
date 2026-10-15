@@ -81,6 +81,14 @@ export default function FluidCoreCanvas() {
     };
     window.addEventListener('mousemove', onMouseMove);
 
+    const onTouchMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+      }
+    };
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+
     const onResize = () => {
       if (!container) return;
       camera.aspect = container.clientWidth / container.clientHeight;
@@ -148,6 +156,7 @@ export default function FluidCoreCanvas() {
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('resize', onResize);
       cancelAnimationFrame(animId);
       if (container && renderer.domElement) {
@@ -162,21 +171,29 @@ export default function FluidCoreCanvas() {
   }, []);
 
   return (
-    <div
-      ref={mountRef}
-      style={{
-        position: 'absolute',
-        top: 0,
-        right: '-5%',
-        width: '65vw',
-        height: '100vh',
-        maxWidth: '900px',
-        maxHeight: '900px',
-        pointerEvents: 'none',
-        zIndex: 0,
-        opacity: 0.9,
-      }}
-      aria-hidden="true"
-    />
+    <>
+      <div ref={mountRef} className="fluid-canvas-container" aria-hidden="true" />
+      <style>{`
+        .fluid-canvas-container {
+          position: absolute;
+          top: 0;
+          right: -5%;
+          width: 65vw;
+          height: 100vh;
+          max-width: 900px;
+          max-height: 900px;
+          pointer-events: none;
+          z-index: 0;
+          opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+          .fluid-canvas-container {
+            right: -20%;
+            width: 100vw;
+            opacity: 0.55;
+          }
+        }
+      `}</style>
+    </>
   );
 }

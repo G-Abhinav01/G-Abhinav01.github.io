@@ -76,7 +76,7 @@ export default function ExperienceEducation() {
               key={idx}
               className="arch-card"
               style={{
-                padding: '36px',
+                padding: 'clamp(20px, 4vw, 36px)',
                 borderLeft: '4px solid var(--acid-lime)',
               }}
             >
@@ -94,7 +94,7 @@ export default function ExperienceEducation() {
                   <span className="accent-pill" style={{ marginBottom: '8px' }}>
                     {exp.period}
                   </span>
-                  <h3 style={{ fontSize: '1.45rem', color: '#fff', marginTop: '6px' }}>
+                  <h3 style={{ fontSize: 'clamp(1.2rem, 3vw, 1.45rem)', color: '#fff', marginTop: '6px' }}>
                     {exp.role}
                   </h3>
                   <div style={{ color: 'var(--acid-lime)', fontFamily: 'var(--font-mono)', fontSize: '0.92rem' }}>
@@ -156,12 +156,12 @@ export default function ExperienceEducation() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '24px',
           }}
         >
           {education.map((edu, idx) => (
-            <div key={idx} className="arch-card" style={{ padding: '28px' }}>
+            <div key={idx} className="arch-card" style={{ padding: 'clamp(18px, 3vw, 28px)' }}>
               <span
                 style={{
                   fontFamily: 'var(--font-mono)',

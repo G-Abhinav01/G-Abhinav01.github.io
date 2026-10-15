@@ -71,7 +71,7 @@ export default function Projects() {
         <div
           className="arch-card"
           style={{
-            padding: '36px',
+            padding: 'clamp(20px, 4vw, 36px)',
             marginBottom: '60px',
             background: 'linear-gradient(170deg, #12141c 0%, #0a0b10 100%)',
             border: '1px solid rgba(255, 255, 255, 0.12)',
@@ -94,22 +94,22 @@ export default function Projects() {
               <span className="accent-pill" style={{ marginBottom: '8px' }}>
                 CLIENT PRODUCTION PROJECT • LIVE
               </span>
-              <h3 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#fff' }}>
+              <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff' }}>
                 India24x7.live
               </h3>
-              <p style={{ color: 'var(--acid-lime)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>
+              <p style={{ color: 'var(--acid-lime)', fontFamily: 'var(--font-mono)', fontSize: 'clamp(0.78rem, 2vw, 0.9rem)' }}>
                 Full-Stack Dynamic News Platform &amp; Multi-Module Admin CMS
               </p>
             </div>
 
-            <div style={{ display: 'flex', gap: '12px' }}>
+            <div className="project-header-actions" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               <a
                 href="https://india24x7.live"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="VISIT"
-                className="btn-primary-kinetic"
-                style={{ padding: '12px 24px', fontSize: '0.88rem' }}
+                className="btn-primary-kinetic project-btn"
+                style={{ padding: '12px 20px', fontSize: '0.86rem' }}
                 onMouseEnter={() => sound.playHover()}
                 onClick={() => sound.playClick()}
               >
@@ -123,8 +123,8 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="REPO"
-                className="btn-ghost-kinetic"
-                style={{ padding: '12px 20px', fontSize: '0.88rem' }}
+                className="btn-ghost-kinetic project-btn"
+                style={{ padding: '12px 18px', fontSize: '0.86rem' }}
                 onMouseEnter={() => sound.playHover()}
                 onClick={() => sound.playClick()}
               >
@@ -138,8 +138,8 @@ export default function Projects() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-              gap: '36px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+              gap: '32px',
               alignItems: 'center',
             }}
           >
@@ -147,6 +147,7 @@ export default function Projects() {
             <div>
               {/* Tab Selector */}
               <div
+                className="touch-scroll-row"
                 style={{
                   display: 'flex',
                   gap: '8px',
@@ -355,7 +356,7 @@ export default function Projects() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '24px',
           }}
         >
@@ -364,7 +365,7 @@ export default function Projects() {
               key={p.num}
               className="arch-card"
               style={{
-                padding: '28px',
+                padding: 'clamp(18px, 3vw, 28px)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -471,6 +472,18 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 580px) {
+          .project-header-actions {
+            width: 100% !important;
+          }
+          .project-btn {
+            flex: 1 1 100% !important;
+            justify-content: center !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
